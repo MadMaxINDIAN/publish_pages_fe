@@ -46,7 +46,7 @@ a:hover, a.nav-link:hover {
     flex-direction: column;
     justify-content: space-around;
     min-height: calc(40vh);
-    margin-top: 20vh;
+    margin-top: 10vh;
     margin-bottom: 20vh;
 }
 .landing-page-main-text {

@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import Button from '@mui/material/Button';
+import {app} from "./firebase/config";
 import './App.css';
 import Navbar from './components/Navbar/navbar';
 import LandingPage from './pages/landing';

@@ -1,10 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import GoogleLoginButton from "./authentication/googleLogin";
+import {connect} from "react-redux";
+import registerUserWithEmailPassword from "../firebase/emailPasswordAuthProvider";
 import FacebookLoginButton from "./authentication/facebookLogin";
 
 const PreRegister = (props) => {
+
+    const [state,setState] = useState({
+        email: '',
+        password: ''
+    });
+
+    const changeHandler = (e) => {
+        setState({
+            ...state, [e.target.name]: e.target.value
+        })
+    }
+
+    const registerUserWithEmail = (e) => {
+        registerUserWithEmailPassword(state.email, state.password);
+    }
 
     return (
         <center>
@@ -20,12 +37,12 @@ const PreRegister = (props) => {
                         noValidate
                         autoComplete="off"
                         >
-                        <TextField id="email" name="email" label="Email" variant="filled" fullWidth type="email" />
+                        <TextField value={state.email} id="email" name="email" label="Email" variant="filled" fullWidth type="email" onChange={changeHandler} />
                         <br />
                         <br />
-                        <TextField id="password" name="password" label="Password" variant="filled" fullWidth type="password" />
+                        <TextField value={state.password} id="password" name="password" label="Password" variant="filled" fullWidth type="password" onChange={changeHandler} />
                         </Box>
-                        <div className="email-password-submit-button">Submit</div>                      
+                        <div className="email-password-submit-button" onClick={registerUserWithEmail} >Submit</div>                      
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12 or-line-horizontal">
@@ -48,4 +65,9 @@ const PreRegister = (props) => {
     )
 }
 
-export default PreRegister;
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, {registerUserWithEmailPassword})(PreRegister);

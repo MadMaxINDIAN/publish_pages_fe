@@ -1,4 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Email from "./emailPasswordAuthProvider";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -13,6 +14,7 @@ const googleSignInWithProps = (props) => {
     // login success
     console.log(user);
   }).catch((error) => {
+    alert(error.message);
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
