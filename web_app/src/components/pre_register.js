@@ -5,9 +5,10 @@ import GoogleLoginButton from "./authentication/googleLogin";
 import {connect} from "react-redux";
 import registerUserWithEmailPassword from "../firebase/emailPasswordAuthProvider";
 import FacebookLoginButton from "./authentication/facebookLogin";
+import { useSnackbar } from "notistack";
 
 const PreRegister = (props) => {
-
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [state,setState] = useState({
         email: '',
         password: ''
@@ -20,7 +21,7 @@ const PreRegister = (props) => {
     }
 
     const registerUserWithEmail = (e) => {
-        registerUserWithEmailPassword(state.email, state.password);
+        registerUserWithEmailPassword(state.email, state.password, enqueueSnackbar);
     }
 
     return (
@@ -28,6 +29,7 @@ const PreRegister = (props) => {
             <div className="pre-register-section-div" id="pre-register">
                 Pre-register
             </div>
+            <p style={{fontSize: "1.2rem", color: "#fefefe", width: "100%", maxWidth: "700px"}} >All the pre-registered users will get privileged access to the app before its official launch.</p>
             <center>
             <div className="row" style={{marginBottom: "4rem"}}>
                 <div className="col-md-6 col-sm-12">

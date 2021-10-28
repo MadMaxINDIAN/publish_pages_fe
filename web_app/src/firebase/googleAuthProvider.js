@@ -1,9 +1,9 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Email from "./emailPasswordAuthProvider";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-const googleSignInWithProps = (props) => {
+const googleSignInWithProps = (enqueueSnackbar) => {
   signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -12,9 +12,21 @@ const googleSignInWithProps = (props) => {
     // The signed-in user info.
     const user = result.user;
     // login success
-    console.log(user);
+    enqueueSnackbar(`Pre-registeration successfull | ${user.displayName}`, {
+      variant: "success",
+      autoHideDuration: 6000,
+    });
+
+    enqueueSnackbar(`${user.displayName} updates will be notified on the mail`, {
+      variant: "info",
+      autoHideDuration: 10000,
+    });
+
   }).catch((error) => {
-    alert(error.message);
+    enqueueSnackbar(error.message, {
+      variant: "error",
+    });
+
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;

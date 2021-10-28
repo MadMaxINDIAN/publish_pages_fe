@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux';
+import { SnackbarProvider } from "notistack";
 import {app} from "./firebase/config";
 import './App.css';
 import Navbar from './components/Navbar/navbar';
@@ -10,6 +11,12 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <Provider store={store}>
+      <SnackbarProvider 
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      maxSnack={5}>
       <BrowserRouter>
     <div className="App">
       <Navbar />
@@ -17,6 +24,7 @@ function App() {
       <Footer />
     </div>
     </BrowserRouter>
+    </SnackbarProvider>
     </Provider>
   );
 }
