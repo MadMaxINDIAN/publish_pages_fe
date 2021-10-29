@@ -1,10 +1,11 @@
 import React from "react";
+import Features from "../components/landing/features";
 import PreRegister from "../components/pre_register";
 
 const LandingPage = (props) => {
     return (
         <div className="container">
-            <div className="row" style={{borderBottom: "3px solid #e3324c"}}>
+            <div className="row" style={{borderBottom: "3px solid #e3324c", marginBottom: "1.5rem"}}>
                 <div className="col-sm-12 col-md-6 col-lg-5">
                     <center>
                     <div className="landing-page-main-div">
@@ -19,6 +20,7 @@ const LandingPage = (props) => {
                     <img src="/books.png" className="books-image" />
                 </div>
             </div>
+            <Features />    
             <PreRegister />
         </div>
     )

@@ -52,6 +52,7 @@ a:hover, a.nav-link:hover {
 .landing-page-main-text {
     font-family: 'Montserrat', sans-serif;
     color: #e3324c;
+    line-height: 3.4rem;
     font-size: calc(3.4rem);
 }
 .landing-page-supporting-text {
@@ -62,6 +63,71 @@ a:hover, a.nav-link:hover {
     width: 100%;
     height: calc(100% - 20px);
     object-fit: cover;
+}
+
+/* FEATURES SECTION */
+.features-section-main-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: calc(40vh);
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+.features-section-main-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #e3324c;
+    line-height: 3.4rem;
+    font-size: calc(3.4rem);
+}
+.features-section-supporting-text {
+    font-size: calc(2rem);
+    color: white;
+}
+.features-section-image {
+    width: 80%;
+    height: calc(100% - 20px);
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .features-section-image {
+        margin-top: 3rem;
+    }
+    .features-section-main-div {
+        margin-top: 0px;
+        margin-bottom: 1rem;
+    }
+    .features-section-supporting-text {
+        font-size: 1.5rem;
+    }
+    .landing-page-main-div{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .laptop-view-only {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .features-section-image {
+        margin-top: 3rem;
+    }
+    .features-section-main-div {
+        margin-top: 0px;
+        margin-bottom: 1rem;
+    }
+    .features-section-supporting-text {
+        font-size: 1.5rem;
+    }
+    .landing-page-main-div{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .mobile-view-only {
+        display: none;
+    }
 }
 
 /* PRE REGISTER SECTION */
@@ -230,4 +296,3 @@ a:hover, a.nav-link:hover {
     border-radius: 10px;
     -webkit-box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
 }
-  

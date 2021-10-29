@@ -11,6 +11,7 @@ const googleSignInWithProps = (enqueueSnackbar) => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    console.log(user);
     // login success
     enqueueSnackbar(`Pre-registeration successfull | ${user.displayName}`, {
       variant: "success",
