@@ -1,6 +1,6 @@
 import React from "react";
 // import { GoogleLogin } from 'react-google-login';
-import googleSignInWithProps from "../../firebase/googleAuthProvider";
+import googleSignInWithProps from "../../services/actions/googleAuthProvider";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 

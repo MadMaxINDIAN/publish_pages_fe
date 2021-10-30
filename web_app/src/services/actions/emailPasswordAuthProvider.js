@@ -2,12 +2,16 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth();
 
-const registerUserWithEmailPassword = (email, password, enqueueSnackbar) => {
+const registerUserWithEmailPassword = (email, password, enqueueSnackbar) => dispatch => {
     
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+
+        // log
+        console.log(user)
+
         // login success
         enqueueSnackbar(`Pre-registeration successfull | ${user.displayName}`, {
             variant: "success",

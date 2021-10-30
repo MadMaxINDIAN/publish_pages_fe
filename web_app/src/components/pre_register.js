@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types';
 import GoogleLoginButton from "./authentication/googleLogin";
 import {connect} from "react-redux";
-import registerUserWithEmailPassword from "../firebase/emailPasswordAuthProvider";
+import registerUserWithEmailPassword from "../services/actions/emailPasswordAuthProvider";
 import FacebookLoginButton from "./authentication/facebookLogin";
 import { useSnackbar } from "notistack";
 
@@ -21,7 +22,7 @@ const PreRegister = (props) => {
     }
 
     const registerUserWithEmail = (e) => {
-        registerUserWithEmailPassword(state.email, state.password, enqueueSnackbar);
+        props.registerUserWithEmailPassword(state.email, state.password, enqueueSnackbar);
     }
 
     return (
@@ -67,9 +68,16 @@ const PreRegister = (props) => {
     )
 }
 
+PreRegister.propTypes = {
+    registerUserWithEmailPassword: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state) => {
     return {}
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {registerUserWithEmailPassword}
+}
 
-export default connect(mapStateToProps, {registerUserWithEmailPassword})(PreRegister);
+export default connect(mapStateToProps, mapDispatchToProps)(PreRegister);
