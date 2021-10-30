@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import PropTypes from 'prop-types';
 import GoogleLoginButton from "./authentication/googleLogin";
 import {connect} from "react-redux";
-import registerUserWithEmailPassword from "../firebase/emailPasswordAuthProvider";
+import registerUserWithEmailPassword from "../services/actions/emailPasswordAuthProvider";
 import FacebookLoginButton from "./authentication/facebookLogin";
 import { useSnackbar } from "notistack";
 
@@ -11,7 +12,8 @@ const PreRegister = (props) => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [state,setState] = useState({
         email: '',
-        password: ''
+        password: '',
+        displayName: '',
     });
 
     const changeHandler = (e) => {
@@ -21,7 +23,7 @@ const PreRegister = (props) => {
     }
 
     const registerUserWithEmail = (e) => {
-        registerUserWithEmailPassword(state.email, state.password, enqueueSnackbar);
+        props.registerUserWithEmailPassword(state.email, state.password, state.displayName, enqueueSnackbar);
     }
 
     return (
@@ -39,6 +41,8 @@ const PreRegister = (props) => {
                         noValidate
                         autoComplete="off"
                         >
+                        <TextField value={state.displayName} id="displayName" name="displayName" label="Full Name" variant="filled" fullWidth type="email" onChange={changeHandler} />
+                        <br /><br />
                         <TextField value={state.email} id="email" name="email" label="Email" variant="filled" fullWidth type="email" onChange={changeHandler} />
                         <br />
                         <br />
@@ -65,6 +69,10 @@ const PreRegister = (props) => {
             </center>
         </center>
     )
+}
+
+PreRegister.propTypes = {
+    registerUserWithEmailPassword: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {

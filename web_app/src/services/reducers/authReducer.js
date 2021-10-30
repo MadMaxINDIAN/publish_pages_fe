@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from "../actions/type";
+import { LOGIN_FAIL, LOGIN_SUCCESS, SET_CURRENT_USER } from "../actions/type";
 
 const initialState = {
     isAuthenticated: false,
@@ -7,11 +7,17 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case SET_CURRENT_USER:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: !action.payload ? false : true,
+                isAuthenticated: true,
                 user: action.payload
+            };
+        case LOGIN_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false,
+                user: {}
             };
         default:
             return state;

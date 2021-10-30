@@ -1,5 +1,5 @@
 import React from "react";
-import facebookSignInWithProps from "../../firebase/facebookAuthProvider";
+import facebookSignInWithProps from "../../services/actions/facebookAuthProvider";
 
 const FacebookLoginButton = (props) => {
     return (
