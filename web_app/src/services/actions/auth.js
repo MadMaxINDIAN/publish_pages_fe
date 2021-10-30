@@ -1,6 +1,5 @@
 import axios from "axios";
 import { REGISTER_SUCCESS } from "./type";
+import { registerUserApi } from "../apis/user";
 
-const registerUser = (data) => dispatch => {
-    
-}
+export const registerUser = (data) => { return registerUserApi(data)};

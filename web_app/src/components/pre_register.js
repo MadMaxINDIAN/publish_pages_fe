@@ -12,7 +12,8 @@ const PreRegister = (props) => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [state,setState] = useState({
         email: '',
-        password: ''
+        password: '',
+        displayName: '',
     });
 
     const changeHandler = (e) => {
@@ -22,7 +23,7 @@ const PreRegister = (props) => {
     }
 
     const registerUserWithEmail = (e) => {
-        props.registerUserWithEmailPassword(state.email, state.password, enqueueSnackbar);
+        props.registerUserWithEmailPassword(state.email, state.password, state.displayName, enqueueSnackbar);
     }
 
     return (
@@ -40,6 +41,8 @@ const PreRegister = (props) => {
                         noValidate
                         autoComplete="off"
                         >
+                        <TextField value={state.displayName} id="displayName" name="displayName" label="Full Name" variant="filled" fullWidth type="email" onChange={changeHandler} />
+                        <br /><br />
                         <TextField value={state.email} id="email" name="email" label="Email" variant="filled" fullWidth type="email" onChange={changeHandler} />
                         <br />
                         <br />
@@ -76,8 +79,5 @@ const mapStateToProps = (state) => {
     return {}
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {registerUserWithEmailPassword}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PreRegister);
+export default connect(mapStateToProps, {registerUserWithEmailPassword})(PreRegister);
