@@ -1,6 +1,7 @@
 import React from "react";
 import Features from "../components/landing/features";
 import PreRegister from "../components/pre_register";
+import Login from "./login";
 
 const LandingPage = (props) => {
     return (
@@ -22,6 +23,7 @@ const LandingPage = (props) => {
             </div>
             <Features />    
             <PreRegister />
+            <Login />
         </div>
     )
 }

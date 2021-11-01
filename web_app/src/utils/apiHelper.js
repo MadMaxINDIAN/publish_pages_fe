@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const post = (url, user, data=null, formdata=null) => {
     const headers = {
-        'Authorization': user?.token
+        'Authorization': user?.user?.stsTokenManager?.accessToken,
     };
     if (formdata) {
         headers["Content-Type"] = 'multipart/form-data';
@@ -15,7 +15,7 @@ export const post = (url, user, data=null, formdata=null) => {
 
 export const get = (url, user) => {
     const headers = {
-        'Authorization': user?.token
+        'Authorization': user?.user?.stsTokenManager?.accessToken,
     }
     return axios.get(url, {headers:  headers})
 }

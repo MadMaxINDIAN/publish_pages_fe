@@ -186,6 +186,9 @@ a:hover, a.nav-link:hover {
     }
     .social-login-section {
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
     .or-text {
         margin-top: 1rem;
