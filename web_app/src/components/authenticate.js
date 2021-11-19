@@ -19,7 +19,7 @@ const Authenticate = (props) => {
     if (props.auth.isAuthenticated) {
       history.push("/");
     }
-  }, []);
+  }, [props.auth.isAuthenticated]);
   const [state, setState] = useState({
     email: "",
     password: "",
