@@ -11,6 +11,7 @@ const registerUserWithEmailPassword =
         // Signed in
         const user = userCredential.user;
         const data = user.providerData[0];
+        data.uid = user.uid;
         data.emailVerified = user.emailVerified;
         data.displayName = displayName;
         return registerUser(data).then((res) => {
