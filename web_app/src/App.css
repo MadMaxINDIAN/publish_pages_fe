@@ -188,6 +188,7 @@ a.nav-link:hover {
   flex-direction: row;
 }
 @media screen and (min-width: 768px) {
+<<<<<<< HEAD
   .or-line-horizontal {
     display: none;
   }
@@ -207,6 +208,30 @@ a.nav-link:hover {
     border-right: 1px solid #fff;
   }
 }
+=======
+    .or-line-horizontal {
+        display: none;
+    }
+    .social-login-section {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .or-text {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .line{
+        background-color: #000;
+        align-items: center;
+        justify-content: center;
+        width: 1px;
+        margin: auto;
+        border-right: 1px solid #fff;
+    }
+}   
+>>>>>>> ce2655b78355940ac5cedd7dcbd4901269c1edfa
 .or-line-vertical {
   display: flex;
   margin-bottom: 1.5rem;

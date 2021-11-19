@@ -1,6 +1,11 @@
 import React from "react";
 import Features from "../components/landing/features";
+<<<<<<< HEAD
 import PreRegister from "../components/authenticate";
+=======
+import PreRegister from "../components/pre_register";
+import Login from "./login";
+>>>>>>> ce2655b78355940ac5cedd7dcbd4901269c1edfa
 
 const LandingPage = (props) => {
   return (
@@ -18,7 +23,13 @@ const LandingPage = (props) => {
                 solution for you
               </div>
             </div>
+<<<<<<< HEAD
           </center>
+=======
+            <Features />    
+            <PreRegister />
+            <Login />
+>>>>>>> ce2655b78355940ac5cedd7dcbd4901269c1edfa
         </div>
         <div className="col-sm-12 col-md-6 col-lg-7">
           <img src="/books.png" className="books-image" />

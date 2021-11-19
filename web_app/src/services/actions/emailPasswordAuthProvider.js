@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { registerUser } from "./auth";
+import { checkUser, registerUser } from "./auth";
 import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./type";
 
 const auth = getAuth();
@@ -33,56 +33,46 @@ const registerUserWithEmailPassword =
                 autoHideDuration: 10000,
               }
             );
-            dispatch({
-              type: LOGIN_SUCCESS,
-              payload: {
-                user: res.data.user,
-              },
-            });
           }
         });
       })
       .catch((error) => {
-        // log error
-        dispatch({
-          type: LOGIN_FAIL,
-          payload: {
-            user: null,
-          },
-        });
         enqueueSnackbar(error?.response?.data?.msg || "User already exists", {
           variant: "error",
           autoHideDuration: 4000,
         });
       });
   };
-
 export const signInWithEmailPassword =
-  (email, password, enqueueSnackbar) => (dispatch) => {
+  (email, password, enqueueSnackbar, navigate) => (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        const data = user.providerData[0];
-        data.uid = user.uid;
-        data.emailVerified = user.emailVerified;
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: {
-            user: data,
-          },
+        return checkUser(userCredential).then((res) => {
+          if (res.status === 200) {
+            enqueueSnackbar("Login successful", {
+              variant: "success",
+              autoHideDuration: 4000,
+            });
+            const user = userCredential.user;
+            dispatch({
+              type: LOGIN_SUCCESS,
+              payload: {
+                user: user,
+              },
+            });
+          }
         });
       })
       .catch((error) => {
-        // log error
-        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
         dispatch({
           type: LOGIN_FAIL,
           payload: {
             user: null,
           },
         });
-        enqueueSnackbar(error?.response?.data?.msg || "User doesn't exists", {
+        enqueueSnackbar(error?.response?.data?.msg || "Login failed", {
           variant: "error",
           autoHideDuration: 4000,
         });
