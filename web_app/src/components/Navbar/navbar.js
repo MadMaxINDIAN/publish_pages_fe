@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Loader from "react-loader-spinner";
 import { logout } from "../../services/actions/emailPasswordAuthProvider";
 
 const Navbar = (props) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleLogout = () => {
-    props.logout();
+    setIsSubmitting(true);
+    props.logout(setIsSubmitting);
   };
   return (
     <nav
@@ -37,7 +40,16 @@ const Navbar = (props) => {
                   onClick={handleLogout}
                   className="nav-link pre-register-button"
                 >
-                  Logout
+                  {isSubmitting ? (
+                    <Loader
+                      type="ThreeDots"
+                      color="#FFFFFF"
+                      height={40}
+                      width={40}
+                    />
+                  ) : (
+                    <div>Logout</div>
+                  )}
                 </div>
               </li>
             </ul>

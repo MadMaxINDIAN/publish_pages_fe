@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 // import { GoogleLogin } from 'react-google-login';
 import googleSignInWithProps from "../../services/actions/googleAuthProvider";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 const GoogleLoginButton = (props) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   return (
@@ -14,12 +16,18 @@ const GoogleLoginButton = (props) => {
       <div
         className="google-login-button"
         onClick={() => {
-          console.log(props.googleSignInWithProps);
-          props.googleSignInWithProps(enqueueSnackbar);
+          setIsSubmitting(true);
+          props.googleSignInWithProps(enqueueSnackbar, setIsSubmitting);
         }}
       >
-        <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
-        <span>&nbsp;&nbsp;Google</span>
+        {isSubmitting ? (
+          <Loader type="ThreeDots" color="#00BFFF" height={40} width={40} />
+        ) : (
+          <div>
+            <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
+            <span>&nbsp;&nbsp;Google</span>
+          </div>
+        )}
       </div>
     </center>
   );

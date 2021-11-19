@@ -10,9 +10,11 @@ import registerUserWithEmailPassword, {
 import FacebookLoginButton from "./authentication/facebookLogin";
 import { useSnackbar } from "notistack";
 import { Link, useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 const Authenticate = (props) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   let history = useHistory();
   useEffect(() => {
     console.log(props.auth);
@@ -34,18 +36,21 @@ const Authenticate = (props) => {
   };
 
   const registerUserWithEmail = (e) => {
+    setIsSubmitting(true);
     if (props.isLogin) {
       props.signInWithEmailPassword(
         state.email,
         state.password,
-        enqueueSnackbar
+        enqueueSnackbar,
+        setIsSubmitting
       );
     } else {
       props.registerUserWithEmailPassword(
         state.email,
         state.password,
         state.displayName,
-        enqueueSnackbar
+        enqueueSnackbar,
+        setIsSubmitting
       );
     }
   };
@@ -114,12 +119,15 @@ const Authenticate = (props) => {
                   type="password"
                   onChange={changeHandler}
                 />
+                <br />
+                <br />
                 <p
                   style={{
                     fontSize: "1.2rem",
                     color: "#fefefe",
                     width: "100%",
                     maxWidth: "700px",
+                    textAlign: "right",
                   }}
                 >
                   {props.isLogin && (
@@ -131,7 +139,16 @@ const Authenticate = (props) => {
                 className="email-password-submit-button"
                 onClick={registerUserWithEmail}
               >
-                {props.isLogin ? "Login" : "Register"}
+                {isSubmitting ? (
+                  <Loader
+                    type="ThreeDots"
+                    color="#FFFFFF"
+                    height={40}
+                    width={40}
+                  />
+                ) : (
+                  <div>{props.isLogin ? "Login" : "Register"}</div>
+                )}
               </div>
             </div>
           </div>

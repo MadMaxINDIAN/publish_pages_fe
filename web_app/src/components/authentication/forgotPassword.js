@@ -6,9 +6,11 @@ import { connect } from "react-redux";
 import { forgotPassword } from "../../services/actions/emailPasswordAuthProvider";
 import { useSnackbar } from "notistack";
 import { Link, useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 const ForgotPasswordForm = (props) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   let history = useHistory();
   useEffect(() => {
     console.log(props.auth);
@@ -28,7 +30,13 @@ const ForgotPasswordForm = (props) => {
   };
 
   const forgotPasswordHandler = (e) => {
-    props.forgotPassword(state.email, enqueueSnackbar, history);
+    setIsSubmitting(true);
+    props.forgotPassword(
+      state.email,
+      enqueueSnackbar,
+      history,
+      setIsSubmitting
+    );
   };
 
   return (
@@ -59,7 +67,16 @@ const ForgotPasswordForm = (props) => {
                 className="email-password-submit-button"
                 onClick={forgotPasswordHandler}
               >
-                Send Email
+                {isSubmitting ? (
+                  <Loader
+                    type="ThreeDots"
+                    color="#FFFFFF"
+                    height={40}
+                    width={40}
+                  />
+                ) : (
+                  <div>Send Email</div>
+                )}
               </div>
             </div>
           </div>
