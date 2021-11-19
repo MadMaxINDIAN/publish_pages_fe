@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/navbar";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import ForgotPassword from "./pages/forgotPassword";
 import LandingPage from "./pages/landing";
 import store from "./store";
 import Footer from "./components/footer/footer";
@@ -29,6 +30,9 @@ function App() {
               </Route>
               <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/forgot-password">
+                <ForgotPassword />
               </Route>
               <Route path="/">
                 <LandingPage />

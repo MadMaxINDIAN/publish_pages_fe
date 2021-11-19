@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { checkUser, registerUser } from "./auth";
 import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./type";
@@ -93,5 +94,23 @@ export const logout = () => (dispatch) => {
       console.log(error);
     });
 };
+
+export const forgotPassword =
+  (email, enqueueSnackbar, history) => (dispatch) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        enqueueSnackbar(`Password reset email sent to ${email}`, {
+          variant: "success",
+          autoHideDuration: 4000,
+        });
+        history.push("/login");
+      })
+      .catch((error) => {
+        enqueueSnackbar(error?.response?.data?.msg || "Password reset failed", {
+          variant: "error",
+          autoHideDuration: 4000,
+        });
+      });
+  };
 
 export default registerUserWithEmailPassword;

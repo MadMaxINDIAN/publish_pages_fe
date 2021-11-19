@@ -114,12 +114,24 @@ const Authenticate = (props) => {
                   type="password"
                   onChange={changeHandler}
                 />
+                <p
+                  style={{
+                    fontSize: "1.2rem",
+                    color: "#fefefe",
+                    width: "100%",
+                    maxWidth: "700px",
+                  }}
+                >
+                  {props.isLogin && (
+                    <Link to="/forgot-password">Forgot Password?</Link>
+                  )}
+                </p>
               </Box>
               <div
                 className="email-password-submit-button"
                 onClick={registerUserWithEmail}
               >
-                Submit
+                {props.isLogin ? "Login" : "Register"}
               </div>
             </div>
           </div>
