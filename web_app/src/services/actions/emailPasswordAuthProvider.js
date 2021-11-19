@@ -1,6 +1,11 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { registerUser } from "./auth";
-import { LOGIN_FAIL, LOGIN_SUCCESS } from "./type";
+import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./type";
 
 const auth = getAuth();
 
@@ -51,5 +56,52 @@ const registerUserWithEmailPassword =
         });
       });
   };
+
+export const signInWithEmailPassword =
+  (email, password, enqueueSnackbar) => (dispatch) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        const data = user.providerData[0];
+        data.uid = user.uid;
+        data.emailVerified = user.emailVerified;
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: {
+            user: data,
+          },
+        });
+      })
+      .catch((error) => {
+        // log error
+        console.log(error);
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: {
+            user: null,
+          },
+        });
+        enqueueSnackbar(error?.response?.data?.msg || "User doesn't exists", {
+          variant: "error",
+          autoHideDuration: 4000,
+        });
+      });
+  };
+
+export const logout = () => (dispatch) => {
+  signOut(auth)
+    .then(() => {
+      dispatch({
+        type: LOGOUT_SUCCESS,
+        payload: {
+          user: null,
+        },
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 export default registerUserWithEmailPassword;

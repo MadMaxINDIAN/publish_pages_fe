@@ -1,9 +1,4 @@
-import {
-  getAuth,
-  signInWithRedirect,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Email from "./emailPasswordAuthProvider";
 import { LOGIN_FAIL, LOGIN_SUCCESS } from "./type";
 import { registerUser } from "./auth";

@@ -2,8 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { logout } from "../../services/actions/emailPasswordAuthProvider";
 
 const Navbar = (props) => {
+  const handleLogout = () => {
+    props.logout();
+  };
   return (
     <nav
       className="navbar navbar-expand-lg"
@@ -27,7 +31,16 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           {props.auth.isAuthenticated ? (
-            <></>
+            <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <div
+                  onClick={handleLogout}
+                  className="nav-link pre-register-button"
+                >
+                  Logout
+                </div>
+              </li>
+            </ul>
           ) : (
             <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -50,10 +63,11 @@ const Navbar = (props) => {
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {})(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);

@@ -8,7 +8,7 @@ import Register from "./pages/register";
 import LandingPage from "./pages/landing";
 import store from "./store";
 import Footer from "./components/footer/footer";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (

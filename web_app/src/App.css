@@ -1,298 +1,304 @@
 body {
-    background-color: #000;
-    font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  font-family: "Montserrat", sans-serif;
 }
 
-a, a.nav-link {
-    color: #e3324c;
+a,
+a.nav-link {
+  color: #e3324c;
 }
 
-a:hover, a.nav-link:hover {
-    color: #ed542e;
+a:hover,
+a.nav-link:hover {
+  color: #ed542e;
 }
 
 .brand-logo {
-    width: 100%;
-    max-width: 200px;
+  width: 100%;
+  max-width: 200px;
 }
 
 .launch-button {
-    font-size: larger;
-    background-color: #fff;
-    padding: 10px 25px !important;
-    border-radius: 100px;
+  font-size: larger;
+  background-color: #fff;
+  padding: 10px 25px !important;
+  border-radius: 100px;
+  cursor: pointer;
 }
 .pre-register-button {
-    font-size: larger;
-    color: #fff!important;
-    padding: 10px 25px !important;
-    border-radius: 100px;
-    margin-right: 10px;
-    background-color: #e3324c;
+  font-size: larger;
+  color: #fff !important;
+  padding: 10px 25px !important;
+  border-radius: 100px;
+  margin-right: 10px;
+  background-color: #e3324c;
+  cursor: pointer;
 }
 .email-password-submit-button {
-    font-size: larger;
-    margin-top: 1rem;
-    color: #fff!important;
-    padding: 10px 25px !important;
-    border-radius: 100px;
-    margin-right: 10px;
-    background-color: #e3324c;
+  font-size: larger;
+  margin-top: 1rem;
+  color: #fff !important;
+  padding: 10px 25px !important;
+  border-radius: 100px;
+  margin-right: 10px;
+  background-color: #e3324c;
+  cursor: pointer;
 }
 
 /* LANDING PAGE */
 .landing-page-main-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-height: calc(40vh);
-    margin-top: 10vh;
-    margin-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: calc(40vh);
+  margin-top: 10vh;
+  margin-bottom: 20vh;
 }
 .landing-page-main-text {
-    font-family: 'Montserrat', sans-serif;
-    color: #e3324c;
-    line-height: 3.4rem;
-    font-size: calc(3.4rem);
+  font-family: "Montserrat", sans-serif;
+  color: #e3324c;
+  line-height: 3.4rem;
+  font-size: calc(3.4rem);
 }
 .landing-page-supporting-text {
-    font-size: calc(2rem);
-    color: white;
+  font-size: calc(2rem);
+  color: white;
 }
 .books-image {
-    width: 100%;
-    height: calc(100% - 20px);
-    object-fit: cover;
+  width: 100%;
+  height: calc(100% - 20px);
+  object-fit: cover;
 }
 
 /* FEATURES SECTION */
 .features-section-main-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-height: calc(40vh);
-    margin-top: 10vh;
-    margin-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: calc(40vh);
+  margin-top: 10vh;
+  margin-bottom: 20vh;
 }
 .features-section-main-text {
-    font-family: 'Montserrat', sans-serif;
-    color: #e3324c;
-    line-height: 3.4rem;
-    font-size: calc(3.4rem);
+  font-family: "Montserrat", sans-serif;
+  color: #e3324c;
+  line-height: 3.4rem;
+  font-size: calc(3.4rem);
 }
 .features-section-supporting-text {
-    font-size: calc(2rem);
-    color: white;
+  font-size: calc(2rem);
+  color: white;
 }
 .features-section-image {
-    width: 80%;
-    height: calc(100% - 20px);
-    object-fit: contain;
+  width: 80%;
+  height: calc(100% - 20px);
+  object-fit: contain;
 }
 
 @media screen and (max-width: 768px) {
-    .features-section-image {
-        margin-top: 3rem;
-    }
-    .features-section-main-div {
-        margin-top: 0px;
-        margin-bottom: 1rem;
-    }
-    .features-section-supporting-text {
-        font-size: 1.5rem;
-    }
-    .landing-page-main-div{
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-    .laptop-view-only {
-        display: none;
-    }
+  .features-section-image {
+    margin-top: 3rem;
+  }
+  .features-section-main-div {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+  }
+  .features-section-supporting-text {
+    font-size: 1.5rem;
+  }
+  .landing-page-main-div {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .laptop-view-only {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .features-section-image {
-        margin-top: 3rem;
-    }
-    .features-section-main-div {
-        margin-top: 0px;
-        margin-bottom: 1rem;
-    }
-    .features-section-supporting-text {
-        font-size: 1.5rem;
-    }
-    .landing-page-main-div{
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-    .mobile-view-only {
-        display: none;
-    }
+  .features-section-image {
+    margin-top: 3rem;
+  }
+  .features-section-main-div {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+  }
+  .features-section-supporting-text {
+    font-size: 1.5rem;
+  }
+  .landing-page-main-div {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .mobile-view-only {
+    display: none;
+  }
 }
 
 /* PRE REGISTER SECTION */
 #pre-register {
-    margin-bottom: calc(2rem);
+  margin-bottom: calc(2rem);
 }
 .pre-register-section-div {
-    font-size: 2rem;
-    color: #fff!important;
-    padding: 10px 25px !important;
-    border-radius: 100px;
-    margin-right: 10px;
-    background-color: #e3324c;
-    margin-top: 4rem;
-    margin-bottom: 1rem;
-    max-width: 400px;
+  font-size: 2rem;
+  color: #fff !important;
+  padding: 10px 25px !important;
+  border-radius: 100px;
+  margin-right: 10px;
+  background-color: #e3324c;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  max-width: 400px;
 }
 .email-register {
-    padding: 2rem;
+  padding: 2rem;
 }
 .google-login-button {
-    color: #000;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 100px;
-    /* max-width: fit-content; */
-    margin: 10px 0;
+  color: #000;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  /* max-width: fit-content; */
+  margin: 10px 0;
+  cursor: pointer;
 }
 .facebook-login-button {
-    color: #fff;
-    background-color: #3b5998;
-    padding: 10px 20px;
-    border-radius: 100px;
-    /* max-width: fit-content; */
-    margin: 10px 0;
+  color: #fff;
+  background-color: #3b5998;
+  padding: 10px 20px;
+  border-radius: 100px;
+  /* max-width: fit-content; */
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 /* SOCIAL LOGIN */
 .line {
-    width: 70%;
-    flex: 1;
-    height: 1px;
-    color: #e3324c;
-    background-color: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  width: 70%;
+  flex: 1;
+  height: 1px;
+  color: #e3324c;
+  background-color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .or-line-horizontal {
-    display: flex;
-    margin-bottom: 1.5rem;
-    flex-direction: row;
+  display: flex;
+  margin-bottom: 1.5rem;
+  flex-direction: row;
 }
 @media screen and (min-width: 768px) {
-    .or-line-horizontal {
-        display: none;
-    }
-    .social-login-section {
-        padding: 1rem;
-    }
-    .or-text {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .line{
-        background-color: #000;
-        align-items: center;
-        justify-content: center;
-        width: 1px;
-        margin: auto;
-        border-right: 1px solid #fff;
-    }
-}   
+  .or-line-horizontal {
+    display: none;
+  }
+  .social-login-section {
+    padding: 1rem;
+  }
+  .or-text {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .line {
+    background-color: #000;
+    align-items: center;
+    justify-content: center;
+    width: 1px;
+    margin: auto;
+    border-right: 1px solid #fff;
+  }
+}
 .or-line-vertical {
-    display: flex;
-    margin-bottom: 1.5rem;
-    flex-direction: column;
+  display: flex;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
 }
 @media screen and (max-width: 768px) {
-    .or-line-vertical {
-        display: none;
-    }
-    .or-text {
-        margin-right: 1rem;
-        margin-left: 1rem;
-    }
-}    
-.or-text {
-    font-size: calc(1.2rem);
-    color: #e3324c;
+  .or-line-vertical {
+    display: none;
+  }
+  .or-text {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
 }
-
+.or-text {
+  font-size: calc(1.2rem);
+  color: #e3324c;
+}
 
 /* footer */
-.footer{
-    background-color: #fff;
-    color: #fff;
-    padding: 1rem;
-    border-top: 5px solid #e3324c;
-    font-size: calc(1.2rem);
-    text-align: center;
+.footer {
+  background-color: #fff;
+  color: #fff;
+  padding: 1rem;
+  border-top: 5px solid #e3324c;
+  font-size: calc(1.2rem);
+  text-align: center;
 }
 .footer__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 .footer__container__left {
-    flex: 1;
+  flex: 1;
 }
 .footer__container__right {
-    flex: 1;
+  flex: 1;
 }
 .footer__container__left__logo {
-    width: 100%;
-    max-width: 200px;
+  width: 100%;
+  max-width: 200px;
 }
 .footer__container__left_link {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 .footer__container__left_link:hover {
-    color: #ed542e;
+  color: #ed542e;
 }
 .footer__container__right__link {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 .footer__container__right__link:hover {
-    color: #ed542e;
+  color: #ed542e;
 }
 .footer__container__right__link__icon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .footer__container__right__link:hover {
-    color: #ed542e;
+  color: #ed542e;
 }
 .footer__container__right__social {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 .footer__copyright {
-    font-size: calc(1.2rem);
-    margin-top: 1rem;
-    color: #e3324c;
+  font-size: calc(1.2rem);
+  margin-top: 1rem;
+  color: #e3324c;
 }
 .footer-logo {
-    width: 100%;
-    margin-top: 1rem;
-    max-width: 200px;
+  width: 100%;
+  margin-top: 1rem;
+  max-width: 200px;
 }
 
 /* Scroll Bar */
 ::-webkit-scrollbar {
-    width: 3px;
-    height: 5px;
+  width: 3px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 1);
 }
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(45deg, #ed542e, #e3324c);
-    border-radius: 10px;
-    -webkit-box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
+  background-image: linear-gradient(45deg, #ed542e, #e3324c);
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0 3px 13px 1px;
 }

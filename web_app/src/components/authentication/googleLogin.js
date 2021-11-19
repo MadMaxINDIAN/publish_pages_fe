@@ -4,6 +4,7 @@ import googleSignInWithProps from "../../services/actions/googleAuthProvider";
 import { connect } from "react-redux";
 import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 const GoogleLoginButton = (props) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();

@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
 import GoogleLoginButton from "./authentication/googleLogin";
 import { connect } from "react-redux";
-import registerUserWithEmailPassword from "../services/actions/emailPasswordAuthProvider";
+import registerUserWithEmailPassword, {
+  signInWithEmailPassword,
+} from "../services/actions/emailPasswordAuthProvider";
 import FacebookLoginButton from "./authentication/facebookLogin";
 import { useSnackbar } from "notistack";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Authenticate = (props) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  let history = useHistory();
+  useEffect(() => {
+    console.log(props.auth);
+    if (props.auth.isAuthenticated) {
+      history.push("/");
+    }
+  }, []);
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -25,12 +34,20 @@ const Authenticate = (props) => {
   };
 
   const registerUserWithEmail = (e) => {
-    props.registerUserWithEmailPassword(
-      state.email,
-      state.password,
-      state.displayName,
-      enqueueSnackbar
-    );
+    if (props.isLogin) {
+      props.signInWithEmailPassword(
+        state.email,
+        state.password,
+        enqueueSnackbar
+      );
+    } else {
+      props.registerUserWithEmailPassword(
+        state.email,
+        state.password,
+        state.displayName,
+        enqueueSnackbar
+      );
+    }
   };
 
   return (
@@ -128,12 +145,15 @@ const Authenticate = (props) => {
 
 Authenticate.propTypes = {
   registerUserWithEmailPassword: PropTypes.func.isRequired,
+  signInWithEmailPassword: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  return { auth: state.auth };
 };
 
-export default connect(mapStateToProps, { registerUserWithEmailPassword })(
-  Authenticate
-);
+export default connect(mapStateToProps, {
+  registerUserWithEmailPassword,
+  signInWithEmailPassword,
+})(Authenticate);
