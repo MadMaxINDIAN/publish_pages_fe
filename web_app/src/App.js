@@ -7,11 +7,12 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgotPassword";
 import LandingPage from "./pages/landing";
+import HomePage from "./pages/home";
 import store from "./store";
 import Footer from "./components/footer/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <Provider store={store}>
       <SnackbarProvider
@@ -33,6 +34,9 @@ function App() {
               </Route>
               <Route path="/forgot-password">
                 <ForgotPassword />
+              </Route>
+              <Route path="/home">
+                <HomePage />
               </Route>
               <Route path="/">
                 <LandingPage />

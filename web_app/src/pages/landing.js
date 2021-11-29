@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import HomePage from "../pages/home";
 import Features from "../components/landing/features";
 import PreRegister from "../components/authenticate";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 const LandingPage = (props) => {
+  let history = useHistory();
+  useEffect(() => {
+    if (props.auth.isAuthenticated) {
+      history.push("/home");
+    }
+  }, [props.auth.isAuthenticated]);
   return (
     <div className="container">
       <div
@@ -29,4 +39,12 @@ const LandingPage = (props) => {
   );
 };
 
-export default LandingPage;
+LandingPage.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {})(LandingPage);
