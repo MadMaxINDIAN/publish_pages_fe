@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 const LandingPage = (props) => {
   let history = useHistory();
   useEffect(() => {
+    document.title = "Publish Pages";
     if (props.auth.isAuthenticated) {
       history.push("/home");
     }

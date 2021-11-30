@@ -8,6 +8,7 @@ import Register from "./pages/register";
 import ForgotPassword from "./pages/forgotPassword";
 import LandingPage from "./pages/landing";
 import HomePage from "./pages/home";
+import ChapterList from "./pages/chapterList";
 import store from "./store";
 import Footer from "./components/footer/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -35,8 +36,11 @@ function App(props) {
               <Route path="/forgot-password">
                 <ForgotPassword />
               </Route>
-              <Route path="/home">
+              <Route exact path="/home">
                 <HomePage />
+              </Route>
+              <Route path="/home/:bookId">
+                <ChapterList />
               </Route>
               <Route path="/">
                 <LandingPage />

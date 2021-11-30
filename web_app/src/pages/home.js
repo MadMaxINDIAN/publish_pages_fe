@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
 import Masonry from "@mui/lab/Masonry";
 import { getBooks } from "../services/actions/books";
 import { connect } from "react-redux";
@@ -7,7 +8,12 @@ import BookCard from "../components/BookCard";
 
 const HomePage = (props) => {
   const [books, setBooks] = useState([]);
+  const history = useHistory();
   useEffect(() => {
+    if (!props.auth.isAuthenticated) {
+      history.push("/");
+    }
+    document.title = "Publish Pages | Home";
     props
       .getBooks(props.auth)
       .then((res) => {
@@ -16,16 +22,19 @@ const HomePage = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.auth.isAuthenticated]);
 
   return (
-    <div style={{padding: "0px 0px 0px 12px"}}>
+    <div style={{ padding: "0px 0px 0px 12px" }}>
       {books.length > 0 ? (
-        <Masonry columns={{sx: 2, md: 3, lg: 5}} spacing={3}>
+        <Masonry columns={{ sx: 2, md: 3, lg: 5 }} spacing={3}>
           {books.map((book) => (
             <>
-            <BookCard book={book} key={book._id} />
-          </>))}
+              <Link to={`/home/${book._id}`}>
+                <BookCard book={book} key={book._id} />
+              </Link>
+            </>
+          ))}
         </Masonry>
       ) : (
         <div>Loading...</div>
