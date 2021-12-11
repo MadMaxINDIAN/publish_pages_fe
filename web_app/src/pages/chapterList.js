@@ -4,6 +4,38 @@ import { getChapters } from "../services/actions/books";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+const ChapterSummaryComponent = (props) => {
+  const [open, setOpen] = useState(false);
+  const chapter = props.chapter;
+  return (
+    <div
+      onClick={() => {
+        setOpen(!open);
+      }}
+      style={{
+        transition: "all 0.2s ease",
+        backgroundColor: "white",
+        color: "black",
+        cursor: "pointer",
+        padding: "10px",
+        borderRadius: "9px",
+        margin: "10px",
+      }}
+    >
+      {chapter.number} - {chapter.title}{" "}
+      {open && (
+        <div
+        style={{
+          fontSize: "0.8em",
+        }}
+        >
+          <div dangerouslySetInnerHTML={{ __html: chapter.summary }} />
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ChapterList = (props) => {
   const [chapterList, setChapterList] = useState();
   const { bookId } = useParams();
@@ -18,19 +50,21 @@ const ChapterList = (props) => {
       });
   }, []);
   return (
-    <div>
+    <div style={{
+      padding: "10px",
+    }}>
       {chapterList ? (
         <div className="landing-page-supporting-text">
           {chapterList.length === 0 ? (
             <>No chapters found</>
           ) : (
             <>
-              <h1>Chapter List</h1>
-              <ul>
+              <h1 style={{
+                padding: "10px",
+              }}>Chapter List</h1>
                 {chapterList.map((chapter) => (
-                  <li key={chapter._id}>{chapter.title}</li>
+                    <ChapterSummaryComponent chapter={chapter} />
                 ))}
-              </ul>
             </>
           )}
         </div>
